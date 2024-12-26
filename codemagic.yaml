@@ -1,0 +1,32 @@
+workflows:
+  default:
+    name: Default Workflow
+    max_build_duration: 60
+    timeout: 60
+    environment:
+      flutter: stable
+      node: 16
+      xcode: 14
+      android: true
+      ios: true
+    scripts:
+      - name: Install Dependencies
+        script: |
+          # Install dependencies for React Native
+          yarn install
+      - name: Build Android
+        script: |
+          # Build the Android app
+          npx react-native run-android --variant=release
+      - name: Build iOS
+        script: |
+          # Build the iOS app
+          npx react-native run-ios --configuration Release
+    artifacts:
+      - build/**/*
+    testing:
+      # Specify test script if you need it
+      scripts:
+        - name: Run Tests
+          script: |
+            yarn test
