@@ -2,13 +2,7 @@ workflows:
   default:
     name: Default Workflow
     environment:
-      flutter: stable
       node: 16
-      xcode: 14
-      android:
-        sdk: latest
-      ios:
-        xcode: 14
     scripts:
       - name: Install Dependencies
         script: |
